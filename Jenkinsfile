@@ -1,4 +1,7 @@
 node{
     stage('SCM Checkout'){
-      git ''
+      git 'https://github.com/ganeshchandran/javahometech-jenkin-demo.git'
+     }
+    stage('Compile Package'){
+      sh 'mvn package'
      }
