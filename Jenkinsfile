@@ -21,7 +21,7 @@ pipeline {
         }
         stage('Nexus Artifact Upload') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'pom.artifactId', classifier: '', file: 'target/myweb-0.0.1-SNAPSHOT.war', type: 'war']], credentialsId: 'nexus-credentials', groupId: 'pom.groupId', nexusUrl: 'localhost:9000', nexusVersion: 'nexus3', protocol: 'http', repository: 'first-pipeline', version: 'pom.version'
+                nexusArtifactUploader artifacts: [[artifactId: 'pom.artifactId', classifier: '', file: 'target/myweb-0.0.1-SNAPSHOT.war', type: 'war']], credentialsId: 'nexus-credentials', groupId: 'pom.groupId', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'first-pipeline', version: 'pom.version'
             }
 			}
         stage('Email Notification') {
