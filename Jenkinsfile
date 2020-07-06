@@ -19,7 +19,7 @@ pipeline {
                 }
             }
         }
-        stage('Email Notification') {
+        stage('Nexus Artifact Upload') {
             steps {
                 nexusArtifactUploader artifacts: [[artifactId: 'pom.artifactId', classifier: '', file: '/var/lib/jenkins/workspace/first-pipeline/target/', type: 'war']], credentialsId: 'nexus-credentials', groupId: 'pom.groupId', nexusUrl: 'localhost', nexusVersion: 'nexus3', protocol: 'http', repository: 'first-pipeline', version: 'pom.version'
             }
