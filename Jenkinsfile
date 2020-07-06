@@ -23,11 +23,11 @@ pipeline {
             steps {
                 nexusArtifactUploader artifacts: [[artifactId: 'pom.artifactId', classifier: '', file: '/var/lib/jenkins/workspace/first-pipeline/target/', type: 'war']], credentialsId: 'nexus-credentials', groupId: 'pom.groupId', nexusUrl: 'localhost', nexusVersion: 'nexus3', protocol: 'http', repository: 'first-pipeline', version: 'pom.version'
             }
+			}
         stage('Email Notification') {
             steps {
                 mail bcc: '', body: 'Jenkins Sample Email', cc: '', from: '', replyTo: '', subject: 'Jenkins Build Success', to: 'ganeshchandran@live.in'
             }
         }
-    }
-}
-}
+ }
+ }
