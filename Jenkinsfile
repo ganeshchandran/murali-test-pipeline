@@ -1,8 +1,11 @@
-node{
-    stage('SCM Checkout'){
-      git 'https://github.com/ganeshchandran/javahometech-jenkin-demo.git'
-     }
-    stage('Compile Package'){
-      sh 'mvn package'
-     }
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
 }
