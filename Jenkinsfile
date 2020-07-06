@@ -21,7 +21,10 @@ pipeline {
         }
         stage('Nexus Artifact Upload') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'pom.artifactId', classifier: '', file: 'target/myweb-0.0.1-SNAPSHOT.war', type: 'war']], credentialsId: 'nexus-credentials', groupId: 'pom.groupId', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'first-pipeline', version: 'pom.version'
+		pom = readMavenPom file: "pom.xml";
+		filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
+                artifactPath = filesByGlob[0].path;
+                nexusArtifactUploader artifacts: [[artifactId: 'pom.artifactId', classifier: '', file: artifactPath, type: pom.packaging][artifactId: 'pom.artifactId', classifier: '', file: pom.xml, type: pom]], credentialsId: 'nexus-credentials', groupId: 'pom.groupId', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'first-pipeline', version: 'pom.version'
             }
 			}
         stage('Email Notification') {
