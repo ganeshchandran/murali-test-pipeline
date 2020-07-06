@@ -30,7 +30,7 @@ pipeline {
 		 nexusArtifactUploader(
                             nexusVersion: 'nexus3',
                             protocol: 'http',
-                            nexusUrl: localhost:8081,
+                            nexusUrl: 'localhost:8081',
                             groupId: pom.groupId,
                             version: pom.version,
                             repository: 'first-pipeline',
