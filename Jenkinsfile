@@ -22,8 +22,6 @@ pipeline {
         stage('Nexus Artifact Upload') {
             steps {
 	       script {
-		 unstash 'pom'
-                 unstash 'artifact'     
 		 pom = readMavenPom file: "pom.xml";
 		 filesByGlob = findFiles(glob: "target/*.${pom.packaging}");
 		 echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
