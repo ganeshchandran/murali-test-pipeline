@@ -27,7 +27,7 @@ pipeline {
 		 echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
 		 artifactPath = filesByGlob[0].path;
 		 artifactExists = fileExists artifactPath;
-                 nexusArtifactUploader )artifacts: [[artifactId: 'pom.artifactId', classifier: '', file: artifactPath, type: pom.packaging],[artifactId: 'pom.artifactId', classifier: '', file: pom.xml, type: pom]], credentialsId: 'nexus-credentials', groupId: 'pom.groupId', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'first-pipeline', version: 'pom.version');
+                 nexusArtifactUploader (artifacts: [[artifactId: 'pom.artifactId', classifier: '', file: artifactPath, type: pom.packaging],[artifactId: 'pom.artifactId', classifier: '', file: pom.xml, type: pom]], credentialsId: 'nexus-credentials', groupId: 'pom.groupId', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'first-pipeline', version: 'pom.version');
 	       }
             }
 			}
