@@ -10,7 +10,7 @@ pipeline {
         stage('Maven Build') {
             steps {
                 sh "mvn clean package"
-                emailext body: 'Jenkins Sample Email', subject: 'Jenkins Build Success', to: 'ganeshchandran@live.in'
+                mail bcc: '', body: 'Jenkins Sample Email', cc: '', from: '', replyTo: '', subject: 'Jenkins Build Success', to: 'ganeshchandran@live.in'
             }
         }
     }
