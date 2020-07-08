@@ -58,15 +58,16 @@ pipeline {
 			dockerImage.push()
 			dockerImage.push('latest')
 			}
-			//sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
+			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
+			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline			
 		}
             }
         }
 	
-        stage('Email Notification') {
-            steps {
-                mail bcc: '', body: 'Jenkins Sample Email', cc: '', from: '', replyTo: '', subject: 'Jenkins Build Success', to: 'ganeshchandran@live.in'
-            }
+        //stage('Email Notification') {
+        //    steps {
+        //        mail bcc: '', body: 'Jenkins Sample Email', cc: '', from: '', replyTo: '', subject: 'Jenkins Build Success', to: 'ganeshchandran@live.in'
+        //    }
         }
  }
  }
