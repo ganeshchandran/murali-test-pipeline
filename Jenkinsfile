@@ -56,7 +56,7 @@ pipeline {
 			{
 			dockerImage = docker.build "registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
 			dockerImage.push()
-			dockerImage.push(latest)
+			dockerImage.push('latest')
 			}
 			//sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
 		}
