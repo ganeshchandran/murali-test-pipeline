@@ -48,6 +48,7 @@ pipeline {
                         );
 	       }
             }
+			}
 	stage('Docker build and push') {
             steps {
                 docker.withRegistry('https://hub.docker.com/', 'dockerhub-credential')  
@@ -56,7 +57,7 @@ pipeline {
                 newApp.push 'latest'
             }
         }
-			}
+	
         stage('Email Notification') {
             steps {
                 mail bcc: '', body: 'Jenkins Sample Email', cc: '', from: '', replyTo: '', subject: 'Jenkins Build Success', to: 'ganeshchandran@live.in'
