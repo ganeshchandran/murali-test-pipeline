@@ -59,7 +59,7 @@ pipeline {
 			dockerImage.push('latest')
 			}
 			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
-			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline			
+			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline"
 		}
             }
         }
