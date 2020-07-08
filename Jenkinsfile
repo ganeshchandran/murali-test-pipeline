@@ -52,11 +52,11 @@ pipeline {
 	stage('Docker build and push') {
             steps {
 		script {
-			dockerImage = docker.build "ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
 			docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credential')
 			{
-			dockerImage.push()
-			dockerImage.push('latest')	
+			dockerImage = docker.build "ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
+			dockerImage.push('ganeshchandran/jenkin-pipeline:$BUILD_NUMBER')
+			dockerImage.push('ganeshchandran/jenkin-pipeline:latest')
 			}
 			//sh "docker rmi ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
 		}
