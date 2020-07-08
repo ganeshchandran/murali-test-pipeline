@@ -68,6 +68,6 @@ pipeline {
         //    steps {
         //        mail bcc: '', body: 'Jenkins Sample Email', cc: '', from: '', replyTo: '', subject: 'Jenkins Build Success', to: 'ganeshchandran@live.in'
         //    }
-        }
+        //}
  }
  }
