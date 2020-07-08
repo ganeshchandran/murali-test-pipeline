@@ -54,7 +54,7 @@ pipeline {
 		script {
 			//docker.withRegistry('https://hub.docker.com/', 'dockerhub-credential'){
 			dockerImage = docker.build "ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
-			docker.withRegistry('https://hub.docker.com/', dockerhub-credential) {
+			docker.withRegistry('https://hub.docker.com/', 'dockerhub-credential') {
 			dockerImage.push()
 			}
                         //dockerImage = docker.build "ganeshchandran/jenkin-pipeline:${env.BUILD_TAG}"
