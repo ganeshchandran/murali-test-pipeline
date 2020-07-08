@@ -52,10 +52,11 @@ pipeline {
 	stage('Docker build and push') {
             steps {
 		script {
-                   docker.withRegistry('https://hub.docker.com/', 'dockerhub-credential')  
+			docker.withRegistry('https://hub.docker.com/', 'dockerhub-credential'){
                    def newApp = docker.build "ganeshchandran/jenkin-pipeline:${env.BUILD_TAG}"
                    newApp.push()
                    newApp.push 'latest'
+		    }
 		}
             }
         }
