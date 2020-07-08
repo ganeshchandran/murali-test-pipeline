@@ -53,19 +53,11 @@ pipeline {
             steps {
 		script {
 			//docker.withRegistry('https://hub.docker.com/', 'dockerhub-credential'){
-			dockerImage = docker.build "ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
-			
-			//withCredentials([usernamePassword( credentialsId: 'dockerhub-credential', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-			
+			dockerImage = docker.build "ganeshchandran/jenkin-pipeline:$env.BUILD_TAG"
 			docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credential') {
-		        
-			//sh "docker login -u ${USERNAME} -p ${PASSWORD}"
 			dockerImage.push()
-			
+			dockerImage.push('latest')
 			}
-                        //dockerImage = docker.build "ganeshchandran/jenkin-pipeline:${env.BUILD_TAG}"
-                        //newApp.push()
-                        //newApp.p     //newApp.pus//}
 		}
             }
         }
