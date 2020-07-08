@@ -53,7 +53,8 @@ pipeline {
             steps {
 		script {
 			//docker.withRegistry('https://hub.docker.com/', 'dockerhub-credential'){
-                        def newApp = docker.build "ganeshchandran/jenkin-pipeline:${env.BUILD_TAG}"
+			dockerImage = docker.build "ganeshchandran/jenkin-pipeline:$BUILD_NUMBER"
+                        //dockerImage = docker.build "ganeshchandran/jenkin-pipeline:${env.BUILD_TAG}"
                         //newApp.push()
                         //newApp.push 'latest'
 		    //}
