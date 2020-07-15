@@ -74,9 +74,17 @@ pipeline {
                 manifestPattern: 'jenkins-deployment.yaml',
                 credentialsId: 'inlaid-micron-268506',
                 verifyDeployments: true])
+		
+		step([
+                $class: 'KubernetesEngineBuilder',
+                projectId: 'inlaid-micron-268506',
+                clusterName: 'cluster-1',
+                location: 'us-central1-c',
+                manifestPattern: 'jenkins-deployment-service.yaml',
+                credentialsId: 'inlaid-micron-268506',
+                verifyDeployments: true])
             }
-        }
-	    
+        }    
 	    
 	
         //stage('Email Notification') {
