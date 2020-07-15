@@ -67,7 +67,7 @@ pipeline {
 	stage('Deploy to GKE') {
             steps {
                 step([
-                $class: 'com.google.jenkins.plugins.k8sengine.KubernetesEngineBuilder',
+                $class: 'KubernetesEngineBuilder',
                 projectId: 'inlaid-micron-268506',
                 clusterName: 'cluster-1',
                 location: 'us-central1-c',
