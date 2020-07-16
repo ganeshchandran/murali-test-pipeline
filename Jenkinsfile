@@ -1,4 +1,7 @@
 pipeline {
+    parameters {
+        choice(name: 'BRANCH', choices: ['master', 'uat', 'qa'], description: 'Select the Branch to Deploy')
+    }
     agent any
 
     stages {
