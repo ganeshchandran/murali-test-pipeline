@@ -1,6 +1,6 @@
 pipeline {
     parameters {
-        choice(name: 'BRANCH', choices: ['master', 'uat', 'qa'], description: 'Select the Branch to Deploy')
+        choice(name: 'BRANCH', choices: ['master', 'feature1', 'feature2'], description: 'Select the Branch to Deploy')
     }
     agent any
 
