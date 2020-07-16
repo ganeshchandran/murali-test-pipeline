@@ -86,7 +86,7 @@ pipeline {
                       location: 'us-central1-c',
                       manifestPattern: 'jenkins-deployment.yaml',
                       credentialsId: 'inlaid-micron-268506',
-                      verifyDeployments: true])
+                      verifyDeployments: false])
 		
 		      step([
                       $class: 'KubernetesEngineBuilder',
@@ -95,7 +95,7 @@ pipeline {
                       location: 'us-central1-c',
                       manifestPattern: 'jenkins-deployment-service.yaml',
                       credentialsId: 'inlaid-micron-268506',
-                      verifyDeployments: true])
+                      verifyDeployments: false])
                    } 
 		   else if (params.ENVIRONMENT == 'uat') {
                       echo 'Deploying code in k8s UAT'
@@ -106,7 +106,7 @@ pipeline {
                       location: 'us-central1-c',
                       manifestPattern: 'jenkins-deployment.yaml',
                       credentialsId: 'inlaid-micron-268506',
-                      verifyDeployments: true])
+                      verifyDeployments: false])
 		
 		      step([
                       $class: 'KubernetesEngineBuilder',
@@ -115,7 +115,7 @@ pipeline {
                       location: 'us-central1-c',
                       manifestPattern: 'jenkins-deployment-service.yaml',
                       credentialsId: 'inlaid-micron-268506',
-                      verifyDeployments: true])
+                      verifyDeployments: false])
 		   }
 		   else if (params.ENVIRONMENT == 'prod') {
                       echo 'Deploying code in k8s Prod'
@@ -126,7 +126,7 @@ pipeline {
                       location: 'us-central1-c',
                       manifestPattern: 'jenkins-deployment.yaml',
                       credentialsId: 'inlaid-micron-268506',
-                      verifyDeployments: true])
+                      verifyDeployments: false])
 		
 		      step([
                       $class: 'KubernetesEngineBuilder',
@@ -135,7 +135,7 @@ pipeline {
                       location: 'us-central1-c',
                       manifestPattern: 'jenkins-deployment-service.yaml',
                       credentialsId: 'inlaid-micron-268506',
-                      verifyDeployments: true])    
+                      verifyDeployments: false])    
                    }
 		   else {
                       echo 'No valid environment selected for deployment'    
