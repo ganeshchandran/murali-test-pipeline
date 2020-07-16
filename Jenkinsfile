@@ -72,6 +72,21 @@ pipeline {
 		}
             }
         }
+	stage('Deploy to GKE') {
+           steps {
+	       script {
+		   if (env.BRANCH_NAME == 'master') {
+                      echo 'update'
+                   } 
+		   else if (env.BRANCH_NAME == 'master') {
+                      echo 'update'
+		   }
+		   else (env.BRANCH_NAME == 'master') {
+                      echo 'update'    
+                   }
+	       }
+	   }
+	}
 	    
 	stage('Deploy to GKE') {
             steps {
