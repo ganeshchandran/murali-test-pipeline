@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-		    git branch: '${params.BRANCH}', url: 'https://github.com/ganeshchandran/javahometech-jenkin-demo.git'
+		    git branch: 'master', url: 'https://github.com/ganeshchandran/javahometech-jenkin-demo.git'
             }
         }
         stage('Maven Build') {
