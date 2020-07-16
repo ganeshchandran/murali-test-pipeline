@@ -63,6 +63,7 @@ pipeline {
 			}
 			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}-$BUILD_ID"
 			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline"
+			sh "sed -i s/jenkin-pipeline:build-number/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}-$BUILD_ID/g jenkins-deployment.yaml"
 		}
             }
         }
@@ -72,7 +73,7 @@ pipeline {
                 step([
                 $class: 'KubernetesEngineBuilder',
                 projectId: 'inlaid-micron-268506',
-                clusterName: 'cluster-1',
+                clusterName: 'prod',
                 location: 'us-central1-c',
                 manifestPattern: 'jenkins-deployment.yaml',
                 credentialsId: 'inlaid-micron-268506',
@@ -81,7 +82,7 @@ pipeline {
 		step([
                 $class: 'KubernetesEngineBuilder',
                 projectId: 'inlaid-micron-268506',
-                clusterName: 'cluster-1',
+                clusterName: 'prod',
                 location: 'us-central1-c',
                 manifestPattern: 'jenkins-deployment-service.yaml',
                 credentialsId: 'inlaid-micron-268506',
