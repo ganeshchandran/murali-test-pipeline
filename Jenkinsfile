@@ -4,7 +4,12 @@ pipeline {
     }
     agent any
 
-    stages {
+    stages {   
+	stage('WS-Cleanup') {
+            steps {
+		    cleanWs()
+            }
+        }
         stage('Checkout') {
             steps {
 		    git branch: "${params.BRANCH}", url: 'https://github.com/ganeshchandran/javahometech-jenkin-demo.git'
