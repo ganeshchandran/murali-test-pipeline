@@ -78,14 +78,68 @@ pipeline {
 	stage('Deploy to GKE') {
            steps {
 	       script {
-		   if (env.BRANCH_NAME == 'master') {
-                      echo 'update'
+		   if (params.ENVIRONMENT == 'dev') {
+		      echo 'Deploying code in k8s Dev'
+                      step([
+                      $class: 'KubernetesEngineBuilder',
+                      projectId: 'inlaid-micron-268506',
+                      clusterName: 'prod',
+                      location: 'us-central1-c',
+                      manifestPattern: 'jenkins-deployment.yaml',
+                      credentialsId: 'inlaid-micron-268506',
+                      verifyDeployments: true])
+		
+		      step([
+                      $class: 'KubernetesEngineBuilder',
+                      projectId: 'inlaid-micron-268506',
+                      clusterName: 'prod',
+                      location: 'us-central1-c',
+                      manifestPattern: 'jenkins-deployment-service.yaml',
+                      credentialsId: 'inlaid-micron-268506',
+                      verifyDeployments: true])
                    } 
-		   else if (env.BRANCH_NAME == 'master') {
-                      echo 'update'
+		   else if (env.BRANCH_NAME == 'uat') {
+                      echo 'Deploying code in k8s UAT'
+                      step([
+                      $class: 'KubernetesEngineBuilder',
+                      projectId: 'inlaid-micron-268506',
+                      clusterName: 'prod',
+                      location: 'us-central1-c',
+                      manifestPattern: 'jenkins-deployment.yaml',
+                      credentialsId: 'inlaid-micron-268506',
+                      verifyDeployments: true])
+		
+		      step([
+                      $class: 'KubernetesEngineBuilder',
+                      projectId: 'inlaid-micron-268506',
+                      clusterName: 'prod',
+                      location: 'us-central1-c',
+                      manifestPattern: 'jenkins-deployment-service.yaml',
+                      credentialsId: 'inlaid-micron-268506',
+                      verifyDeployments: true])
 		   }
-		   else (env.BRANCH_NAME == 'master') {
-                      echo 'update'    
+		   else if (env.BRANCH_NAME == 'prod') {
+                      echo 'Deploying code in k8s Prod'
+                      step([
+                      $class: 'KubernetesEngineBuilder',
+                      projectId: 'inlaid-micron-268506',
+                      clusterName: 'prod',
+                      location: 'us-central1-c',
+                      manifestPattern: 'jenkins-deployment.yaml',
+                      credentialsId: 'inlaid-micron-268506',
+                      verifyDeployments: true])
+		
+		      step([
+                      $class: 'KubernetesEngineBuilder',
+                      projectId: 'inlaid-micron-268506',
+                      clusterName: 'prod',
+                      location: 'us-central1-c',
+                      manifestPattern: 'jenkins-deployment-service.yaml',
+                      credentialsId: 'inlaid-micron-268506',
+                      verifyDeployments: true])    
+                   }
+		   else {
+                      echo 'No valid environment selected for deployment'    
                    }
 	       }
 	   }
