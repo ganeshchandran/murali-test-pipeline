@@ -57,13 +57,13 @@ pipeline {
 		script {
 			docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-credential')
 			{
-			dockerImage = docker.build "registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}-$BUILD_ID"
+			dockerImage = docker.build "registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}"
 			dockerImage.push()
 			
 			}
-			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}-$BUILD_ID"
+			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}"
 			
-			sh "sed -i s/jenkin-pipeline:build-number/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}-$BUILD_ID/g jenkins-deployment.yaml"
+			sh "sed -i s/jenkin-pipeline:build-number/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}/g jenkins-deployment.yaml"
 		}
             }
         }
