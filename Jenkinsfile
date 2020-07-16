@@ -59,10 +59,10 @@ pipeline {
 			{
 			dockerImage = docker.build "registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}-$BUILD_ID"
 			dockerImage.push()
-			dockerImage.push('latest')
+			
 			}
 			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}-$BUILD_ID"
-			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline"
+			
 			sh "sed -i s/jenkin-pipeline:build-number/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}-$BUILD_ID/g jenkins-deployment.yaml"
 		}
             }
