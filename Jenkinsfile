@@ -70,8 +70,9 @@ pipeline {
 			
 			}
 			sh "docker rmi registry.hub.docker.com/ganeshchandran/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}"
-			
 			sh "sed -i s/jenkin-pipeline:build-number/jenkin-pipeline:$BUILD_NUMBER-${params.BRANCH}/g jenkins-deployment.yaml"
+			sh "sed -i s/namespace-value/${params.ENVIRONMENT}/g jenkins-deployment.yaml"
+                        sh "sed -i s/namespace-value/${params.ENVIRONMENT}/g jenkins-deployment-service.yaml"
 		}
             }
         }
