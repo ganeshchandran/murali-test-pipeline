@@ -77,7 +77,7 @@ pipeline {
 	stage('Deploy to GKE') {
            steps {
 	       script {
-		   if (params.ENVIRONMENT == 'dev') {
+		      if (${params.ENVIRONMENT} == 'dev') {
 		      echo 'Deploying code in k8s Dev'
                       step([
                       $class: 'KubernetesEngineBuilder',
@@ -97,7 +97,7 @@ pipeline {
                       credentialsId: 'inlaid-micron-268506',
                       verifyDeployments: true])
                    } 
-		   else if (env.BRANCH_NAME == 'uat') {
+		   else if (${params.ENVIRONMENT} == 'uat') {
                       echo 'Deploying code in k8s UAT'
                       step([
                       $class: 'KubernetesEngineBuilder',
@@ -117,7 +117,7 @@ pipeline {
                       credentialsId: 'inlaid-micron-268506',
                       verifyDeployments: true])
 		   }
-		   else if (env.BRANCH_NAME == 'prod') {
+		   else if (${params.ENVIRONMENT} == 'prod') {
                       echo 'Deploying code in k8s Prod'
                       step([
                       $class: 'KubernetesEngineBuilder',
