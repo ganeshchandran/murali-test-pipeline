@@ -1,15 +1,5 @@
 version: "2.4"
 services:
-  jenkins:
-    image: jenkins
-    expose:
-        - "8080"
-        - "50000"
-    ports:
-        - "8080:8080"
-        - "50000:50000"
-    volumes:
-        - ./jenkins_data:/var/jenkins_home:rw
   sonarqube:
     image: sonarqube
     expose:
