@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Checkout') {
             steps {
-		    git branch: "${params.BRANCH}", url: 'https://github.com/ganeshchandran/javahometech-jenkin-demo.git'
+		    git branch: "${params.BRANCH}", url: 'https://github.com/ganeshchandran/murali-test-pipeline.git'
             }
         }
         stage('Maven Build') {
